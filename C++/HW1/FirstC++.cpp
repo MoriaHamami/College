@@ -1,10 +1,13 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
+
 // . כתבו את המבנה Survivor . נתוני המבנה :
 // i . שם השורד: מחרוזת סטטית בגודל 20 .
 // ii . גי ל
 // iii . סטטוס משפחתי )רווק/נשוי/במערכת יחסים (
+
+const int NUM_OF_TRIBES = 2;
 
 enum eStatus
 {
@@ -12,6 +15,7 @@ enum eStatus
     MARRIED,
     IN_A_RELATIONSHIP
 };
+
 const char *status[] = {
     "Single",
     "Married",
@@ -34,11 +38,11 @@ struct Tribe
 {
     char name[20];
     int maxSurvs;
-    int leftSurvs;
+    int currNumOfSurvs;
     // We have ** and not * because
-    // we need to have a dynamic allocated pointer (?)
+    // we need to have a dynamic allocated pointer 
     // to an array of pointers
-    Survivor *survivors[];
+    Survivor **survivors;
 };
 
 // כתבו את הפונקציות הגלובליות הבאות, בחלק מהמקרים עליכם להחליט מהם הפרמטרים
@@ -71,11 +75,11 @@ void setSurvivor(Survivor &surv)
 void printSurvivor(Survivor &surv)
 {
     if (surv.name)
-        cout << surv.name << endl;
+        cout << "\nName: " << surv.name;
     if (surv.age)
-        cout << surv.age << endl;
+        cout << "\nAge: " << surv.age;
     if (surv.status >= 0 && surv.status <= 2)
-        cout << status[surv.status] << endl;
+        cout << "\nStatus: " << status[surv.status];
 }
 
 // כתבו את הפונקציות הגלובליות הבאות, בחלק מהמקרים עליכם להחליט מהם הפרמטרים
@@ -90,44 +94,32 @@ void printSurvivors(Tribe &tribe);
 void removeSurvivor(Tribe &tribe, Survivor &surv);
 void addSurvivor(Tribe &tribe, Survivor &surv);
 void setTribe(Tribe &tribe);
+void freeTribe( Tribe& t );
 
 void setTribe(Tribe &tribe)
 {
 
     char nameBuff[20];
     int maxSurvs;
-    int leftSurvs;
 
-    cout << "Please enter tribe name" << endl;
+    cout << "Please enter tribe name: ";
     cin >> nameBuff;
-    strcpy(tribe.name, nameBuff);
+    strcpy_s(tribe.name, nameBuff);
 
-    cout << "Please enter maximum survivors in tribe" << endl;
+    cout << "Please enter maximum survivors in tribe: ";
     cin >> maxSurvs;
     tribe.maxSurvs = maxSurvs;
 
-    // cout << "Please enter amount of left survivors in tribe" << endl;
-    // cin >> leftSurvs;
-    // tribe.leftSurvs = leftSurvs;
-
-    tribe.leftSurvs = maxSurvs;
-
-    // cout << "Please enter survivor status: \n0 = " << status[0] << "\n1 = " << status[1] << "\n2 = " << status[2] << endl;
-    // cin >> stat;
-    // surv.status = (eStatus)stat;
-
-    //   char name[20];
-    // int maxSurvs;
-    // int leftSurvs;
-    // Survivor *survivors[];
+	tribe.survivors = new Survivor*[tribe.maxSurvs];
+    tribe.currNumOfSurvs = 0;
 }
 
 void addSurvivor(Tribe &tribe, Survivor &surv)
 {
-    if (tribe.maxSurvs - tribe.leftSurvs > 0)
+    if (tribe.maxSurvs > tribe.currNumOfSurvs)
     {
-        tribe.survivors[tribe.leftSurvs + 1] = &surv;
-        tribe.leftSurvs++;
+        tribe.survivors[tribe.currNumOfSurvs] = &surv;
+        tribe.currNumOfSurvs++;
     }
 }
 
@@ -136,25 +128,33 @@ void removeSurvivor(Tribe &tribe, Survivor &surv)
     if (tribe.survivors == nullptr)
         return;
     // const int survpointer = surv
-    for (int i = 0; i < tribe.leftSurvs; i++)
+    for (int i = 0; i < tribe.currNumOfSurvs; i++)
     {
         Survivor *currSurv = tribe.survivors[i];
         if (strcmp(currSurv->name, surv.name) == 0)
         {
             delete currSurv;
             // Save the last survivor in the empty spot
-            currSurv = tribe.survivors[tribe.leftSurvs - 1];
-            tribe.leftSurvs--;
+            currSurv = tribe.survivors[tribe.currNumOfSurvs - 1];
+            tribe.currNumOfSurvs--;
         }
     }
 }
 
 void printSurvivors(Tribe &tribe)
 {
-    for (int i = 0; i < tribe.leftSurvs; i++)
+    for (int i = 0; i < tribe.currNumOfSurvs; i++)
     {
         printSurvivor(*tribe.survivors[i]);
     }
+}
+
+void freeTribe( Tribe& tribe )
+{
+	for( int i = 0; i < tribe.currNumOfSurvs; i++ )
+		delete tribe.survivors[i];
+
+	delete[]tribe.survivors;
 }
 
 // כתבו main :
@@ -167,130 +167,52 @@ void printSurvivors(Tribe &tribe)
 
 int main()
 {
-    // cout << "How many survivors are in each tribe?" << endl;
-    // int survsCount;
-    // cin >> survsCount;
 
-    // The code below will not work
-    // because we need to dynamically allocate memory
-    // Survivor *tribe1[survsCount];
-    // Survivor *tribe2[survsCount];
+    Tribe allTribes[NUM_OF_TRIBES];
 
-    // Survivor **tribe1 = new Survivor *[survsCount];
-    // Survivor **tribe2 = new Survivor *[survsCount];
-
-    Tribe *allTribes[2];
-
-    for (Tribe *tribe : allTribes)
+    for (int i = 0; i < NUM_OF_TRIBES; i++)
     {
-        setTribe(*tribe);
+        setTribe(allTribes[i]);
     }
-    // Tribe **tribe1 = new Tribe *[survsCount];
-    // Tribe **tribe2 = new Tribe *[survsCount];
+
     bool isCont = true;
     int count = 1;
     do
     {
-        cout << "Select 1 to enter survivor " << count + 1 << " stats in tribe 1. \nChoose 0 to exit" << endl;
+        cout << "Select 1 to add survivor #" << count << " to tribe 1. \nChoose 0 to exit: ";
         int select;
         cin >> select;
-        if (!select)
+        if (!select){
+            isCont = false;
             break;
-        Survivor *s = new Survivor;
-        setSurvivor(*s);
-        addSurvivor(*allTribes[0], *s);
-        // TO FIX ////////////////////
-        // *tribe1[i]
+        }
+        Survivor *s1 = new Survivor;
+        setSurvivor(*s1);
+        addSurvivor(allTribes[0], *s1);
 
-        cout << "Select 1 to enter survivor " << count + 1 << " stats in tribe 2. \nChoose 0 to exit" << endl;
+        cout << "Select 1 to enter survivor #" << count << " to tribe 2. \nChoose 0 to exit: ";
         cin >> select;
-        if (!select)
+        if (!select){
+            isCont = false;
             break;
-        // FIX HERE TOO /////////////////////
-        setSurvivor(*s);
-        addSurvivor(*allTribes[1], *s);
+        }
+        Survivor *s2 = new Survivor;
+        setSurvivor(*s2);
+        addSurvivor(allTribes[1], *s2);
 
         count++;
 
-    } while (isCont && allTribes[0]->leftSurvs < allTribes[0]->maxSurvs && allTribes[1]->leftSurvs < allTribes[1]->maxSurvs);
+    } while (isCont && allTribes[0].currNumOfSurvs < allTribes[0].maxSurvs && allTribes[1].currNumOfSurvs < allTribes[1].maxSurvs);
 
-    cout << "All tribes:" << endl;
+    cout << "\nAll tribes: "<< endl;
 
     for (int i = 0; i < 2; i++)
     {
-        cout << "Tribe " << i << ": " << endl;
-        printSurvivors(*allTribes[i]);
+        cout << "\nTribe #" << i << ": ";
+        printSurvivors(allTribes[i]);
     }
 
-    // Survivor *me = new Survivor;
-    // setSurvivor(*me);
-    // printSurvivor(*me);
-
     // Free allocated memory
-    delete[] allTribes[0];
-    delete[] allTribes[1];
+	freeTribe( allTribes[0] );
+	freeTribe( allTribes[1] );
 }
-// int main()
-// {
-//     cout << "How many survivors are in each tribe?" << endl;
-//     int survsCount;
-//     cin >> survsCount;
-
-//     // The code below ill not work
-//     // because we need to dynamically allocate memory
-//     // Survivor *tribe1[survsCount];
-//     // Survivor *tribe2[survsCount];
-
-//     Survivor **tribe1 = new Survivor *[survsCount];
-//     Survivor **tribe2 = new Survivor *[survsCount];
-
-//     int counts[2] = {0, 0};
-//     for (int i = 0; i < survsCount; i++)
-//     {
-//         int select;
-//         cout << "Select 1 to enter survivor " << i + 1 << " stats in tribe 1. \nChoose 0 to exit" << endl;
-//         cin >> select;
-//         if (!select)
-//             break;
-//         Survivor *s = new Survivor;
-//         setSurvivor(*s);
-//         // TO FIX ////////////////////
-//         // *tribe1[i]
-//         counts[0]++;
-
-//         cout << "Select 1 to enter survivor " << i + 1 << " stats in tribe 2. \nChoose 0 to exit" << endl;
-//         cin >> select;
-//         if (!select)
-//             break;
-//         // FIX HERE TOO /////////////////////
-//         setSurvivor(*tribe2[i]);
-//         counts[1]++;
-//         // cout << "Choose 1 to exit. Choose 1 to add survivor."
-//         // cout << "What is "
-//         // tribe1[i] =
-//     }
-
-//     for (int i = 0; i < survsCount; i++)
-//     {
-//         if (counts[0] < i && counts[1] < i)
-//             break;
-//         if (counts[0] >= i)
-//         {
-//             cout << "Survivor " << i << " stats in tribe 1:" << endl;
-//             printSurvivor(*tribe1[i]);
-//         }
-//         if (counts[1] >= i)
-//         {
-//             cout << "Survivor " << i << " stats in tribe 2:" << endl;
-//             printSurvivor(*tribe2[i]);
-//         }
-//     }
-
-//     // Survivor *me = new Survivor;
-//     // setSurvivor(*me);
-//     // printSurvivor(*me);
-
-//     // Free allocated memory
-//     delete[] tribe1;
-//     delete[] tribe2;
-// }
