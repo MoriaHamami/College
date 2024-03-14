@@ -62,10 +62,14 @@ void setSurvivor(Survivor &surv)
     cout << "Please enter survivor name" << endl;
     cin >> nameBuff;
     strcpy(surv.name, nameBuff);
+    // Can also do:
+    // cin >> surv.name
 
     cout << "Please enter survivor age" << endl;
     cin >> age;
     surv.age = age;
+    // Can also do:
+    // cin >> surv.age
 
     cout << "Please enter survivor status: \n0 = " << status[0] << "\n1 = " << status[1] << "\n2 = " << status[2] << endl;
     cin >> stat;

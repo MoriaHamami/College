@@ -1,0 +1,33 @@
+*{
+    margin: 2px;
+}
+
+h1{
+    text-align: center;
+    font-family: sans-serif;
+    color: rgb(224, 95, 117);
+    margin-top: 10px;
+}
+
+body{
+    background-color: #f6e9e9;
+}
+
+input{
+    border-radius: 5px;
+    border: 2px solid pink;
+}
+
+button {
+    border: 2px solid pink;
+    border-radius: 5px;
+    background-color: rgb(240, 132, 150);
+    color: white;
+    font-family: Tahoma;
+}
+
+.input-box{
+    margin-left:45px;
+    /* background-color: #fff; */
+    /* width: min-content; */
+}
