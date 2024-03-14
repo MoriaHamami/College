@@ -1,19 +1,19 @@
-*{
+* {
     margin: 2px;
 }
 
-h1{
+h1 {
     text-align: center;
     font-family: sans-serif;
     color: rgb(224, 95, 117);
     margin-top: 10px;
 }
 
-body{
+body {
     background-color: #f6e9e9;
 }
 
-input{
+input {
     border-radius: 5px;
     border: 2px solid pink;
 }
@@ -24,10 +24,26 @@ button {
     background-color: rgb(240, 132, 150);
     color: white;
     font-family: Tahoma;
+    cursor: pointer;
 }
 
-.input-box{
-    margin-left:45px;
+.input-box {
     /* background-color: #fff; */
     /* width: min-content; */
+}
+
+.input-box,.list-box{
+    background-color: rgb(242, 207, 213);
+    padding: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 45px;
+    width: max-content;
+}
+
+.list-box {
+}
+
+ol {
+    padding: 0;
 }
