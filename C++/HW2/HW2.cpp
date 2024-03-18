@@ -139,7 +139,7 @@ int main()
     asuta.addPatient(&saar);
     asuta.print();
 
-    asuta.deleteAllPats();
+    // asuta.deleteAllPats();
 
     return 1;
 }
