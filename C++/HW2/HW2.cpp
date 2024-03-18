@@ -94,12 +94,19 @@ public:
         tempPatients[_patLength - 1] = newP;
         _patients = tempPatients;
     }
+    // DELETE DOESNT WORK
     void deleteAllPats(){
         for (int i = 0; i < _patLength; i++)
         {
+            cout<<_patients[i]->getFirstName()<<endl;
+            cout<<_patients[i]<<endl;
+            cout<<i<<endl;
+            // delete _patients[_patLength - i -1]->getDiagnosis();
             delete _patients[i];
         }
+            // delete _patients++;
         delete []_patients;
+        _patLength = 0;
     }
 };
 
@@ -131,6 +138,8 @@ int main()
     asuta.addPatient(&mori);
     asuta.addPatient(&saar);
     asuta.print();
+
+    asuta.deleteAllPats();
 
     return 1;
 }
