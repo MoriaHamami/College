@@ -1,6 +1,13 @@
 {
     "configurations": [
         {
+            "type": "java",
+            "name": "EX1_A",
+            "request": "launch",
+            "mainClass": "Project1.EX1_A",
+            "projectName": ""
+        },
+        {
             "name": "C/C++: g++.exe build and debug active file",
             "type": "cppdbg",
             "request": "launch",
