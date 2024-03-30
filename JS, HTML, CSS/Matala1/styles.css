@@ -1,9 +1,309 @@
-#google-img{
-    /* width: 20 px; */
-    height: 50px;
+/* GENERAL */
+* {
+    font-size: 14px;
 }
 
-.icon{
+.container {
+    padding: 0;
+    max-width: 100%;
+    margin: 0;
+}
+
+.row {
+    padding: 0;
+    margin: 0;
+}
+
+.icon {
+    margin: 0 15px;
+    padding: 0;
+    color: #4d5156;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    display: inline;
+}
+
+h2,
+h1,
+p {
     margin: 0;
     padding: 0;
+}
+
+#bold {
+    font-weight: bold;
+    font-size: 16.5px;
+}
+
+/* FONTS */
+
+@font-face {
+    font-family: GoogleSans;
+    src: url(./fonts/OpenSans-Regular.ttf);
+}
+
+/* HEADER */
+
+header.row {
+    margin: 20px 10px;
+}
+
+#google-img {
+    height: 35px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+#input-group {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10rem;
+    width: 538px;
+    margin: 5px;
+    padding: 10px;
+    box-shadow: rgba(64, 60, 67, 0.16) 0px 2px 5px 1px;
+}
+
+#input-group:hover {
+    box-shadow: rgb(64 60 67 / 19%) 0px 2px 6px 2px;
+}
+
+#input-group input {
+    width: 100%;
+}
+
+#input-group span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#input-group input {
+    border: none;
+}
+
+#input-group .icon {
+    margin: 0;
+    padding: 0 15px;
+    /* font-size: 20px; */
+}
+
+#cam-icon {
+    font-size: 20px;
+}
+
+#search-icon {
+    font-size: 17px;
+}
+
+#x-icon {
+    border-right: 1px solid lightgray;
+}
+
+#input-group input:focus {
+    outline: none;
+}
+
+#input-group input::placeholder,
+#input-group input {
+    color: #1f1f1f;
+    font-size: 17px;
+    font-family: arial, sans-serif;
+}
+
+#input-group input {
+    padding-left: 15px;
+}
+
+#end-icons.icons {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+#end-icons.icons .bi-gear::before{
+    padding: 10px;
+}
+
+#end-icons.icons svg {
+    padding: 7px;
+    box-sizing: content-box;
+}
+
+#end-icons.icons .icon:hover {
+    background-color: rgb(240, 240, 240);
+    border-radius: 50%;
+}
+
+#end-icons.icons svg {
+    margin-right: 22px;
+}
+
+#end-icons.icons button {
+    padding: 10px 30px;
+}
+
+#end-icons.icons button:hover {
+    box-shadow: rgb(64 60 67 / 32%) 0px 1px 2px 1px;
+}
+
+/* NAV */
+
+nav.row {
+    padding: 0 16px;
+    border-bottom: 1px solid lightgray;
+}
+
+ul #nav-tab {
+    padding: 12px;
+}
+
+ul {
+    padding: 12px;
+    margin: 0;
+}
+
+#nav-tab {
+    font-family: GoogleSans, arial, sans-serif-medium, sans-serif;
+    color: #70757a;
+}
+
+#nav-tab.first {
+    border-bottom: 3px solid #1a73e8;
+    color: #1a73e8;
+}
+
+#nav-tabs .icon {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+.safe-search,
+.tools {
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.safe-container{
+    display: flex;
+    justify-content: end;
+}
+
+.safe-search{
+    display: flex;
+}
+
+.safe-search .icon{
+    margin:  auto 0 0 10px;
+    font-size: 10px;
+}
+
+.safe-search:hover,
+.tools:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+/* .bi-caret-down-fill{
+    display: inline;
+} */
+
+/* MAIN */
+
+main {
+    margin: 23px 28px;
+}
+
+#results-count {
+    font-family: GoogleSans, arial, sans-serif;
+    color: #5e5e5e;
+}
+
+#result-1 {
+    margin-top: 25px;
+}
+
+#g-icon {
+    height: 28px;
+    width: 28px;
+    padding: 4px;
+    /* background-color: gray; */
+    border: 1px solid lightgray;
+    border-radius: 50%;
+}
+
+#site-comp {
+    font-family: arial, sans-serif;
+    color: #202124;
+    font-size: 16px;
+}
+
+#site-link {
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    color: #4d5156;
+}
+
+#site-info a {
+    display: block;
+}
+#site-info .icon {
+    font-size: 14px;
+    margin: 0;
+}
+
+#site-name a {
+    font-family: arial, sans-serif;
+    color: #1a0dab;
+    font-size: 22px;
+}
+
+#site-name {
+    margin-top: 5px;
+}
+
+#site-name a:hover {
+    text-decoration: underline 1.5px;
+    cursor: pointer;
+}
+
+#site-content {
+    font-size: 16px;
+    color: #4d5156;
+    margin-top: 5px;
+}
+
+#also-ask h1 {
+    color: #1f1f1f;
+    font-size: 24px;
+    font-family: GoogleSans, arial, sans-serif;
+    margin-top: 45px;
+    margin-bottom: 10px;
+}
+
+#also-ask .icon {
+    font-size: 15px;
+    margin-inline: 5px;
+}
+
+#also-ask .row p {
+    color: #1f1f1f;
+    font-size: 16px;
+    font-family: arial, sans-serif;
+    cursor: pointer;
+    padding-block: 15px;
+    padding-inline: 0;
+}
+
+#quest {
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: center;
 }
