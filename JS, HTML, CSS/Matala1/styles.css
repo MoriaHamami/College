@@ -1,6 +1,15 @@
 /* GENERAL */
+html,body{
+    overflow-x: hidden;
+    /* width: 100vw; */
+}
+
 * {
     font-size: 14px;
+}
+
+*::selection {
+    background-color: lightgray;
 }
 
 .container {
@@ -38,8 +47,9 @@ p {
 }
 
 #bold {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 16.5px;
+    color: #5f6368;
 }
 
 /* FONTS */
@@ -53,6 +63,8 @@ p {
 
 header.row {
     margin: 20px 10px;
+    /* position: fixed;
+  top: 0; */
 }
 
 #google-img {
@@ -120,6 +132,10 @@ header.row {
 
 #input-group input {
     padding-left: 15px;
+}
+
+#end-icons {
+    z-index: 2;
 }
 
 #end-icons.icons {
@@ -226,11 +242,11 @@ main {
     color: #5e5e5e;
 }
 
-#result-1 {
+#result {
     margin-top: 25px;
 }
 
-#g-icon {
+#result #icon {
     height: 28px;
     width: 28px;
     padding: 4px;
@@ -278,6 +294,7 @@ main {
     font-size: 16px;
     color: #4d5156;
     margin-top: 5px;
+    font-family: arial, sans-serif;
 }
 
 #also-ask h1 {
@@ -307,3 +324,197 @@ main {
     display: flex;
     align-items: center;
 }
+
+/* FOOTER */
+
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+footer #button-container{
+    margin: 0 23px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+footer button{
+    align-self: center;
+    margin-block: 30px;
+    background-color: #f1f3f4;
+    color: #1f1f1f;
+    border-radius: 50px;
+    font-size: 16px;
+    padding: 7px 110px;
+    border:none;
+    z-index: 2;
+}
+footer button:hover{
+    background-color: lightgray;
+}
+
+footer .icon {
+    font-size: 15px;
+    margin-inline: 5px;
+}
+
+footer #line {
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+    position:absolute;
+    top: 50%;
+}
+
+footer #fill{
+    background-color: #f2f2f2;
+    padding: 15px 0;
+    margin: 67px 0 0 0;
+}
+
+#location-info{
+    /* padding: 0 23px; */
+    color: #5e5e5e;
+    background-color: #f2f2f2;
+    font-family: arial, sans-serif;
+    /* font-size: 2px; */
+    border-bottom: 1px solid lightgray;
+    /* margin: 0; */
+    /* padding-block-end: 5px; */
+    padding: 10px 27px;
+}
+
+#location-info #country{
+    font-size: 17px;
+    border-inline-end: 1px solid lightgray;
+    padding-inline-end: 10px;
+    padding-block: 15px;
+    /* margin-inline-end: 10px; */
+}
+
+#location-info #city{
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+#location-info #city span{
+    /* padding-block: 15px; */
+    font-size: 15.5px;
+}
+
+#location-info .icon{
+    /* display: flex;
+    align-self: center; */
+    /* align-self: center; */
+    padding-inline-start: 15px;
+    font-size: 10px;
+    margin: 0;
+    cursor: text;
+}
+
+#location-info a{
+    font-size: 15.5px;
+    color:#1a0dab;
+}
+
+
+ /* Small devices (landscape phones, 576px and up) */
+@media (max-width: 1120px) { 
+    #input-group {
+        width: 100%;
+    }
+    header .icon{
+        margin: 0;
+        font-size: 15px !important; 
+        padding-inline: 2px !important;
+    }
+    header .icon::before{
+        padding-inline: 2px !important;
+    }
+    header svg{
+        width: 18px;
+        /* height: 18px; */
+        margin: 10px !important;
+    }
+    #google-img {
+        height: 20px;
+        /* margin: 0; */
+    }
+    header a{
+        padding-inline-end: 0 !important;
+        
+    }
+    header label{
+        padding: 2px !important;
+
+    }
+    header button{
+        padding: 5px !important;
+    }
+ }
+
+ /* Medium devices (tablets, 768px and up) */
+/* @media (min-width: 768px) { 
+    
+ } */
+
+ /* Large devices (desktops, 992px and up) */
+/* @media (min-width: 992px) { 
+    
+ } */
+
+ /* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    header{
+        position: relative;
+    }
+    header label{
+        position: absolute;
+        left: 150px;
+        /* margin-inline:150px; */
+        padding-inline: 0 !important;
+    }
+    nav.row{
+        padding-inline: 150px;
+    }
+    main{
+        margin-inline:150px;
+    }
+    footer #button-container{
+        margin-inline: 150px;
+    }
+    footer #fill{
+        padding-inline: 150px;
+    }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1900px) { 
+   
+    header label{
+        /* position: absolute; */
+        left: 300px;
+        /* margin-inline:300px; */
+        /* width: min-content; */
+        /* padding-inline: 0 !important; */
+    }
+    /* header.row{
+        margin-inline:200px;
+    } */
+    nav.row{
+        padding-inline: 300px;
+    }
+    main{
+        margin-inline:300px;
+    }
+    footer #button-container{
+        margin-inline: 300px;
+    }
+    footer #fill{
+        padding-inline: 300px;
+    }
+    
+ }
