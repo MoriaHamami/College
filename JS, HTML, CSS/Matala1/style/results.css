@@ -56,7 +56,7 @@ p {
 
 @font-face {
     font-family: GoogleSans;
-    src: url(./fonts/OpenSans-Regular.ttf);
+    src: url(../fonts/OpenSans-Regular.ttf);
 }
 
 /* HEADER */
@@ -105,11 +105,17 @@ header.row {
 }
 
 #cam-icon {
-    font-size: 20px;
+    height: 23px;
+}
+
+#mic-icon {
+    height: 19px;
 }
 
 #search-icon {
     font-size: 17px;
+    color: #4285f4;
+    font-weight: bold;
 }
 
 #x-icon {
@@ -399,29 +405,27 @@ footer #fill {
 }
 
 
-/* Small devices (landscape phones, 576px and up) */
+/* Small devices (landscape phones, 1120px and down) */
 @media (max-width: 1120px) {
+
     #input-group {
         width: 100%;
     }
 
-    header .icon {
-        margin: 0;
-        font-size: 15px !important;
-        padding-inline: 2px !important;
+    header #icons .icon {
+        padding-inline: 5px !important;
     }
 
-    header .icon::before {
-        padding-inline: 2px !important;
+    header #icons #mic-icon {
+        padding-inline-start: 10px !important;
+    }
+
+    header .icon {
+        margin: 0;
     }
 
     header svg {
-        width: 18px;
         margin: 10px !important;
-    }
-
-    #google-img {
-        height: 20px;
     }
 
     header a {
@@ -432,10 +436,6 @@ footer #fill {
     header label {
         padding: 2px !important;
 
-    }
-
-    header button {
-        padding: 5px !important;
     }
 }
 

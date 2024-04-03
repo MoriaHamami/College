@@ -1,10 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Google</title>
+    <title>New Tab</title>
+    <link rel="icon" href="./imgs/g-icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link href="./style/index.css" rel="stylesheet">
 </head>
+
 <body>
-    <nav></nav>
-    <main></main>
+
+    <header class="header text-end">
+        <a class="links h-underline" href="#">Gmail</a>
+        <a class="links h-underline" href="#">Images</a>
+        <svg class="icon align-self-center" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
+            width="24">
+            <path
+                d="M240-160q-33 0-56.5-23.5T160-240q0-33 23.5-56.5T240-320q33 0 56.5 23.5T320-240q0 33-23.5 56.5T240-160Zm240 0q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm240 0q-33 0-56.5-23.5T640-240q0-33 23.5-56.5T720-320q33 0 56.5 23.5T800-240q0 33-23.5 56.5T720-160ZM240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm240 0q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm240 0q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400ZM240-640q-33 0-56.5-23.5T160-720q0-33 23.5-56.5T240-800q33 0 56.5 23.5T320-720q0 33-23.5 56.5T240-640Zm240 0q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Zm240 0q-33 0-56.5-23.5T640-720q0-33 23.5-56.5T720-800q33 0 56.5 23.5T800-720q0 33-23.5 56.5T720-640Z" />
+        </svg>
+        <img id="logo_person" src="imgs/person.png.png">
+    </header>
+
+    <main id="the_main">
+        <div class="container text-center ">
+
+            <div class="align-self-center col">
+                <img id="Logo" src="imgs/Google_LOGO.pnj.png">
+            </div>
+
+            <label class="col align-self-center">
+                <div id="input-group">
+                    <a href="./results.html" class="align-self-center"><i class="btn bi bi-search icon"
+                            id="search-icon"></i></a>
+                    <input placeholder="Search Google or type a URL"></input>
+                    <span id="icons">
+                        <img class="icon" id="mic-icon" src="./imgs/mic.png" />
+                        <img class="icon" id="cam-icon" src="./imgs/cam.svg" />
+                    </span>
+                </div>
+            </label>
+
+            <div>
+                <a href="./results.html"><button class="search_btn">Google Search</button></a>
+                <a href="./results.html"><button class="search_btn">I'm Feeling Lucky</button></a>
+            </div>
+
+            <div class="lang_opt">
+                Google offered in:
+                <a href="#" class="h-underline">עברית</a>
+                <a href="#" class="h-underline">العربية</a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <div class="bottom_page container">
+
+        <div id="country" class="row">
+            Israel
+        </div>
+        <div class="row bottom-row">
+
+            <div class="col-auto" id="bottom_left">
+                <a class="links" href="#">About</a>
+                <a class="links" href="#">Advertising</a>
+                <a class="links" href="#">Business</a>
+                <a class="links no-p-end" href="#">How Search works</a>
+            </div>
+            <div class="col text-end" id="bottom_right">
+                <a class="links no-p-start" href="#">Privacy</a>
+                <a class="links" href="#">Terms</a>
+                <a class="links" href="#">Settings</a>
+            </div>
+        </div>
+
+    </div>
+
 </body>
+
 </html>
