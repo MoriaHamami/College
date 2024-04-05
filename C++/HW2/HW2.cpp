@@ -70,7 +70,7 @@ public:
     {
         strcpy(_cName, cName);
         strcpy(_cAddress, cAddress);
-        _patLength=0;
+        _patLength = 0;
         _patients = new Patient *[_patLength];
     }
     void print()
@@ -80,32 +80,32 @@ public:
         cout << "Patients: " << endl;
         for (int i = 0; i < _patLength; i++)
         {
-            cout << "Patient #" << i+1 << ": " << endl;
+            cout << "Patient #" << i + 1 << ": " << endl;
             (*_patients[i]).print();
         }
     }
     void addPatient(Patient *newP)
     {
         Patient **tempPatients = new Patient *[++_patLength];
-        for (int i = 0; i < _patLength; i++)
+        for (int i = 0; i < _patLength - 1; i++)
         {
             tempPatients[i] = _patients[i];
         }
         tempPatients[_patLength - 1] = newP;
+        if (_patients) //!=NULL
+        {
+            delete[] _patients;
+        }
         _patients = tempPatients;
     }
-    // DELETE DOESNT WORK
-    void deleteAllPats(){
+
+    void deleteAllPats()
+    {
         for (int i = 0; i < _patLength; i++)
         {
-            cout<<_patients[i]->getFirstName()<<endl;
-            cout<<_patients[i]<<endl;
-            cout<<i<<endl;
-            // delete _patients[_patLength - i -1]->getDiagnosis();
             delete _patients[i];
         }
-            // delete _patients++;
-        delete []_patients;
+        delete[] _patients;
         _patLength = 0;
     }
 };
@@ -116,30 +116,40 @@ int main()
     char lName[20] = "Hamami";
     long id = 315464347;
     char diagnosis[30] = "The patient is so very sick.";
-    Patient mori;
-    mori.init(fName, lName, id, diagnosis);
-    mori.print();
+    // Patient mori; 
+    // If you do this you dont need to delete 
+    // because it wasnt made dynamically
+    Patient *p2 = new Patient();
+    (*p2).init(fName, lName, id, diagnosis);
 
     char fName2[20] = "Saara";
     char lName2[20] = "Betzalel";
     long id2 = 290758435;
     char diagnosis2[] = "The patient is confused and believes he is a duck.";
-    Patient saar;
-    saar.init(fName2, lName2, id2, diagnosis2);
-    saar.print();
-    // int updatedId = mori.getId();
-    // cout << "The updated id is: " << updatedId << endl;
-    // mori.print();
+    Patient *p1 = new Patient();
+    (*p1).init(fName2, lName2, id2, diagnosis2);
+
 
     char cName[20] = "Asuta";
     char cAddress[20] = "Dror 7, Jerusalem";
     Clinic asuta;
     asuta.init(cName, cAddress);
-    asuta.addPatient(&mori);
-    asuta.addPatient(&saar);
+    asuta.addPatient(p1);
+    asuta.addPatient(p2);
     asuta.print();
 
     asuta.deleteAllPats();
 
+    // mori.init(fName, lName, id, diagnosis);
+    // mori.print();
+    // Patient saar;
+    // saar.init(fName2, lName2, id2, diagnosis2);
+    // saar.print();
+    // asuta.addPatient(&mori);
+    // asuta.addPatient(&saar);
+
+    // int updatedId = mori.getId();
+    // cout << "The updated id is: " << updatedId << endl;
+    // mori.print();
     return 1;
 }

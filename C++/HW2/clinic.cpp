@@ -20,12 +20,23 @@ void Clinic::print()
 }
 void Clinic::addPatient(Patient *newP)
 {
+    // Patient **tempPatients = new Patient *[++_patLength];
+    // for (int i = 0; i < _patLength-1; i++)
+    // {
+    //     tempPatients[i] = _patients[i];
+    // }
+    // tempPatients[_patLength - 1] = newP;
+    // _patients = tempPatients;
     Patient **tempPatients = new Patient *[++_patLength];
-    for (int i = 0; i < _patLength; i++)
+    for (int i = 0; i < _patLength - 1; i++)
     {
         tempPatients[i] = _patients[i];
     }
     tempPatients[_patLength - 1] = newP;
+    if (_patients) //!=NULL
+    {
+        delete[] _patients;
+    }
     _patients = tempPatients;
 }
 // DELETE DOESNT WORK

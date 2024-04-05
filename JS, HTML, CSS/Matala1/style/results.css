@@ -173,6 +173,17 @@ header.row {
     box-shadow: rgb(64 60 67 / 32%) 0px 1px 2px 1px;
 }
 
+#end-icons #logo_person {
+    width: 45px;
+    padding: 3px;
+    box-sizing: content-box;
+}
+
+#end-icons #logo_person:hover {
+    background-color: rgb(240, 240, 240);
+    border-radius: 50%;
+}
+
 /* NAV */
 
 nav.row {
