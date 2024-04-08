@@ -24,5 +24,5 @@ public:
 
 	void print();
 
-	~Survivor()
+	~Survivor();
 };
